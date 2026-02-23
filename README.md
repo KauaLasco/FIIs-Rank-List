@@ -2,7 +2,13 @@
 Este projeto realiza **web scraping** dos Fundos Imobiliários (FIIs) diretamente do site [Funds Explorer](https://www.fundsexplorer.com.br/ranking), organiza os dados em tabela, aplica critérios de seleção e gera uma lista com os **Top 22 FIIs** mais relevantes. Além disso, é criado uma tabela para a visualização dos resultados utilizando **Matplotlib**.
 
 # Sumário
-
+- [1. Instalação]
+- [2. Funcionalidades]
+- [3. Objetivo do Projeto]
+- [4. File descriptions]
+- [5. Como executar]
+- [6. Referências]
+- [7. Agradecimentos]
 
 # [1. Instalação] 
 Para executar este projeto, é necessário instalar as seguintes bibliotecas: 
@@ -33,7 +39,7 @@ Critérios utilizados:
 
 A partir desses indicadores, o projeto calcula um score total e seleciona os Top 22 FIIs que melhor atendem aos critérios, exportando os resultados em CSV e exibindo uma tabela visual.
 
-#[4. File descriptions]
+# [4. File descriptions]
 Estrutura do repositório:
 fiis-rank-list/
 ├── LICENSE

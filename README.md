@@ -42,15 +42,15 @@ A partir desses indicadores, o projeto calcula um score total e seleciona os Top
 # [4. File descriptions]
 Estrutura do repositório:
 fiis-rank-list/
-├── LICENSE
-├── README.md               
-├── list_fiis.csv                  # Lista inicial de nomes dos FIIs
-├── list_tabela_fiis.csv           # Tabela bruta extraída
-├── main.py                        # Script principal
-├── tabela_fiis_organizada.csv     # Tabela organizada e tratada
-├── teste_versao_1.py              # Primeira versão do código principal
-├── teste_versao_2.py              # Segunda versão do código principal
-├── top_22_fiis.csv                # Ranking final dos 22 melhores FIIs
+- LICENSE
+- README.md
+- list_fiis.csv                  # Lista inicial de nomes dos FIIs
+- list_tabela_fiis.csv           # Tabela bruta extraída
+- main.py                        # Script principal
+- tabela_fiis_organizada.csv     # Tabela organizada e tratada
+- teste_versao_1.py              # Primeira versão do código principal
+- teste_versao_2.py              # Segunda versão do código principal
+- top_22_fiis.csv                # Ranking final dos 22 melhores FIIs
 
 # [5. Como executar] 
 Clone este repositório: 

@@ -5,7 +5,7 @@ Este projeto realiza **web scraping** dos Fundos Imobiliários (FIIs) diretament
 - [1. Instalação]
 - [2. Funcionalidades]
 - [3. Objetivo do Projeto]
-- [4. File descriptions]
+- [4. Descrição dos arquivos]
 - [5. Como executar]
 - [6. Referências]
 - [7. Agradecimentos]

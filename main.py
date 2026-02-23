@@ -11,6 +11,10 @@ import pandas as pd
 from time import sleep
 
 
+#Importa a biblioteca "matplotlib" para gerar a tabela com os dados finais.
+import matplotlib.pyplot as plt
+
+
 #Configuração do Chrome
 opcoes = Options()
 opcoes.add_experimental_option('detach', True)
@@ -67,8 +71,85 @@ df_organizado.set_index("Fundos", inplace=True)
 
 
 #Exibe a lista com os dados na tela.
-print(df_organizado)
+#print(df_organizado)
 
 
 #Cria um novo arquivo (.csv) com os dados da tabela de FIIs organizados.
 df_organizado.to_csv("tabela_fiis_organizada.csv", encoding="utf-8", sep=";")
+
+
+#Realiza a leitura do arquivo (.csv) da tabela com os dados dos FIIs, tendo como índice a coluna "Fundos".
+df_organizado = pd.read_csv("tabela_fiis_organizada.csv", sep=";", index_col="Fundos")
+
+
+#Remove pontos e vírgulas para realizar a converção de "str" para "float".
+df_organizado["Liquidez Diária (R$)"] = (df_organizado["Liquidez Diária (R$)"].str.replace(".", "", regex=False).str.replace(",", ".", regex=False).astype(float))
+
+df_organizado["P/VP"] = df_organizado["P/VP"].str.replace(",", ".", regex=False).astype(float)
+
+df_organizado["Dividend Yield"] = (df_organizado["Dividend Yield"].str.replace("%", "", regex=False).str.replace(",", ".", regex=False).str.replace(".", "", regex=False).str.strip().astype(float) / 100)
+
+df_organizado["Variação de Preço"] = (df_organizado["Variação de Preço"].str.replace("%", "", regex=False).str.replace(",", ".", regex=False).str.replace(".", "", regex=False).str.strip().astype(float) / 100)
+
+df_organizado["Patrimônio Líquido"] = (df_organizado["Patrimônio Líquido"].str.replace(".", "", regex=False).str.replace(",", ".", regex=False).astype(float))
+
+df_organizado["Num. Cotistas"] = (df_organizado["Num. Cotistas"].str.replace(".", "", regex=False).astype(int))
+
+
+#Realiza a seleçãos dos FIIs que atendem aos critérios.
+top_liquidez = df_organizado.nlargest(547, "Liquidez Diária (R$)")
+top_pvp = df_organizado.nsmallest(547, "P/VP")
+top_dyield = df_organizado.nlargest(547, "Dividend Yield")
+top_vpreco = df_organizado.nsmallest(547, "Variação de Preço")
+top_valor_patrimonial = df_organizado.nlargest(547, "Patrimônio Líquido")
+top_cotistas = df_organizado.nlargest(547, "Num. Cotistas")
+
+
+#Aplicando todos os critérios para que seja possível realizar o filtro na tabela.
+criterio_filtro_fiis = (set(top_liquidez.index) & set(top_pvp.index) & set(top_dyield.index) & set(top_vpreco.index) & set(top_valor_patrimonial.index) & set(top_cotistas.index))
+
+
+#Realização do filtro com todos os critérios.
+top_fiis_filtrados = df_organizado.loc[list(criterio_filtro_fiis)]
+
+
+#Realiza a criação de um Score para realizar a ordenação e seleção dos melhores FIIs.
+top_fiis_filtrados["score_total"] = (top_fiis_filtrados["Liquidez Diária (R$)"].rank(ascending=False) + top_fiis_filtrados["P/VP"].rank(ascending=True) + top_fiis_filtrados["Dividend Yield"].rank(ascending=False) + top_fiis_filtrados["Variação de Preço"].rank(ascending=True) + top_fiis_filtrados["Patrimônio Líquido"].rank(ascending=False) + top_fiis_filtrados["Num. Cotistas"].rank(ascending=False))
+
+
+#Realiza a ordenação dos FIIs pelo Score e seleciona os 22 melhores.
+top_22_fiis = top_fiis_filtrados.sort_values("score_total").head(22)
+
+
+#Exibição dos TOP 22 FIIs que atendem a todos os critérios.
+print("Top 22 FIIs com base no P/VP, DY, LD, Var%, PL e Nº de Cotistas")
+print(top_22_fiis)
+
+
+#Criação do arquivo dos TOP 22 FIIs.
+top_22_fiis.head(22).to_csv("top_22_fiis.csv", sep=";", encoding="utf-8")
+
+
+#Leitura do Arquivo final dos TOPs FIIs.
+top_22_fiis = pd.read_csv("top_22_fiis.csv", sep=";", encoding="utf-8-sig", index_col="Fundos")
+
+
+#Criação da figura e dos eixos.
+figura, eixo = plt.subplots(figsize=(14,7))
+eixo.axis("tight")
+eixo.axis("off")
+
+
+#Criando a tabela visual com os dados do arquivo (.csv) final.
+tabela = eixo.table(cellText=top_22_fiis.values, colLabels=top_22_fiis.columns, rowLabels=top_22_fiis.index, loc="center")
+
+
+#Edição da fonte e escala da tabela.
+tabela.auto_set_font_size(False)
+tabela.set_fontsize(5)
+tabela.scale(1.2, 1.2)
+
+
+#Nomeação do título da tabela e exibição.
+plt.title("Top 22 FIIs com base no P/VP, DY, LD, Var%, PL e Nº de Cotistas", fontsize=12)
+plt.show()

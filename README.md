@@ -66,7 +66,7 @@ pip install selenium pandas matplotlib
 
 ## 3. Execute o código principal:
 ```bash
-python fiis_ranking.py
+python main.py
 ```
 
 ## 4. O projeto irá:
@@ -165,21 +165,16 @@ pip install selenium pandas matplotlib
 
 ## 3. Run the main code:
 ```bash
-python fiis_ranking.py
+python main.py
 ```
 
 ## 4. The project will:
 
 - Open the Chrome browser via Selenium.
-
 - Extract the data from the FIIs table in Funds Explorer.
-
 - Organize and clean the data with Pandas.
-
 - Apply the selection criteria and calculate the score.
-
 - Export the results to .csv files.
-
 - Display a visual table with Matplotlib.
 
 # [6. [References]

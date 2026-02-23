@@ -71,77 +71,12 @@ python fiis_ranking.py
 - Exportar os resultados em arquivos .csv.
 - Exibir uma tabela visual com Matplotlib.
 
+# [6. Referências]
+- [Funds Explorer](https://www.fundsexplorer.com.br/ranking?utm_source=copilot.com) – Fonte dos dados de FIIs.
+- [Documentação do Selenium](https://www.selenium.dev/documentation/)
+- [Documentação do Pandas](https://pandas.pydata.org/docs/)
+- [Documentação do Matplotlib](https://matplotlib.org/stable/index.html)
 
-# [5. Referências]
-- Funds Explorer – Fonte dos dados de FIIs.
-- Documentação do Selenium (selenium.dev in Bing)
-- Documentação do Pandas
-- Documentação do Matplotlib (matplotlib.org in Bing)
+# [7. Agradecimentos]
+Agradeço a Jesus Cristo, pois abriu minha mente e me deu forças nessas 12h seguidas de desenvolvimento do projeto!
 
-  
-## 🎮 Regras do Jogo
-- O caça-níquel possui 3 linhas e 3 colunas.
-- Os símbolos disponíveis são: `$`, `@`, `#`, `%`, com diferentes probabilidades e valores.
-- O jogador aposta em até 3 linhas simultaneamente.
-- Se todos os símbolos de uma linha forem iguais, o jogador ganha o valor do símbolo multiplicado pela aposta.
-
-## 🧑‍💻 Como Executar
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/KauaLasco/Slot-Machine-Simulator.git
-
-2. Entrar na pasta do projeto:
-   ```bash
-   cd Slot-Machine-Simulator
-
-3. Execute o programa em Python
-   ```bash
-   python src/main.py
-  - Esse comando roda o arquivo principal do jogo que está dentro da pasta src/.
-  - Se você estiver usando Linux/Mac e tiver o Python 3 instalado, pode ser necessário usar:
-   ```bash
-   python3 src/main.py
-   ```
-
----
-
-# 🎰 Slot Machine Simulator in Python
-
-This project is an interactive slot machine simulator via terminal, developed in Python. The player can deposit credits, choose how many lines to bet on, set the bet value per line, and spin the machine to try to get winning combinations.
-
-## 🚀 Features
-- Initial and additional credit deposit
-- Choice of number of lines to bet on (up to 3)
-- Setting the bet value per line (with minimum and maximum limits)
-- Random generation of symbols in a 3x3 matrix
-- Validation of wins per line (matching symbols)
-- Calculation of winnings based on symbol values
-- Automatic balance update after each round
-- Continuous loop until the player decides to quit
-
-## 🎮 Game Rules
-- The slot machine has 3 rows and 3 reels.
-- The available symbols are: `$`, `@`, `#`, `%`, with different probabilities and values.
-- The player bets on up to 3 lines simultaneously.
-- If all the symbols on a line are the same, the player wins the value of the symbol multiplied by the bet.
-
-## 🧑‍💻 How to Run
-1. Clone the repository:
-```bash
-git clone https://github.com/KauaLasco/Slot-Machine-Simulator.git
-```
-
-2. Enter the project folder:
-```bash
-cd Slot-Machine-Simulator
-```
-
-3. Run the Python program:
-```bash
-python src/main.py
-```
-- This command runs the main game file located in the src/ folder.
-- If you are using Linux/Mac and have Python 3 installed, you may need to use:
-```bash
-python3 src/main.py
-```
